@@ -33,6 +33,10 @@ class App extends Component {
     .then((res) => this.setState({ note: res.data, showNote: true }) )
   }
 
+  submitNote = (data) => {
+    console.log(data);
+  }
+
   render() {
     const { showNote, notes, note } = this.state;
 
@@ -40,7 +44,10 @@ class App extends Component {
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
         {showNote ?
-          <Note note={note} />
+          <Note
+            note={note}
+            submitNote={this.submitNote}
+          />
         :
           <List
             getNotes={this.getNotes}
